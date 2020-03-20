@@ -1,6 +1,5 @@
 #include "Engine.h"
 
-
 Engine::Engine()
 {
 	// Get the screen resolution and create an SFML window and View
@@ -30,6 +29,19 @@ Engine::Engine()
 	m_BGRightView.setViewport(
 		FloatRect(0.5f, 0.001f, 0.499f, 0.998f));
 
+	// Can this graphics card use shaders?
+	if (!sf::Shader::isAvailable())
+	{
+		// Time to get a new PC
+		m_Window.close();
+	}
+	else
+	{
+		// Load two shaders (1 vertex, 1 fragment)
+		bool result = m_RippleShader.loadFromFile("shaders/vertShader.vert",
+			"shaders/rippleShader.frag");
+	}
+
 	m_BackgroundTexture = TextureHolder::GetTexture(
 		"graphics/background.png");
 
@@ -39,6 +51,9 @@ Engine::Engine()
 	// Load the texture for the background vertex array
 	m_TextureTiles = TextureHolder::GetTexture(
 		"graphics/tiles_sheet.png");
+
+	// Initialize the particle system
+	m_PS.init(1000);
 }
 
 void Engine::run()
