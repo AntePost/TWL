@@ -27,4 +27,6 @@ public:
 	Vector2i getLevelSize();
 
 	int getCurrentLevel();
+
+	void decrementCurrentLevel();
 };

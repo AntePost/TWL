@@ -92,6 +92,24 @@ void SoundManager::playFire(Vector2f emitterLocation, Vector2f listenerLocation)
 	}
 }
 
+void SoundManager::stopFire(Vector3f emitterLocation)
+{
+	if (emitterLocation == m_Fire1Sound.getPosition())
+	{
+		m_Fire1Sound.stop();
+	}
+
+	if (emitterLocation == m_Fire2Sound.getPosition())
+	{
+		m_Fire2Sound.stop();
+	}
+
+	if (emitterLocation == m_Fire3Sound.getPosition())
+	{
+		m_Fire3Sound.stop();
+	}
+}
+
 void SoundManager::playFallInFire()
 {
 	m_FallInFireSound.setRelativeToListener(true);

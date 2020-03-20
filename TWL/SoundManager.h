@@ -29,6 +29,7 @@ public:
 	SoundManager();
 
 	void playFire(Vector2f emitterLocation, Vector2f listenerLocation);
+	void stopFire(Vector3f emitterLocation);
 	void playFallInFire();
 	void playFallInWater();
 	void playJump();
