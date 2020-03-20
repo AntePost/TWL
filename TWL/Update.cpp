@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include "LevelManager.h"
 #include <SFML/Graphics.hpp>
 #include <sstream>
 
@@ -53,6 +54,7 @@ void Engine::update(float dtAsSeconds)
 		// Have Thomas and Bob run out of time?
 		if (m_TimeRemaining <= 0)
 		{
+			m_LM.decrementCurrentLevel();
 			m_NewLevelRequired = true;
 		}
 	}// End if playing
@@ -77,6 +79,9 @@ void Engine::update(float dtAsSeconds)
 		{
 			// Play the sound and pass in the location as well
 			m_SM.playFire(Vector2f(posX, posY), m_Thomas.getCenter());
+		}
+		else {
+			m_SM.stopFire(Vector3f(posX, posY, 0.0f));
 		}
 	}
 

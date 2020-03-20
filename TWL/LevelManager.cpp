@@ -154,6 +154,11 @@ int LevelManager::getCurrentLevel()
 	return m_CurrentLevel;
 }
 
+void LevelManager::decrementCurrentLevel()
+{
+	m_CurrentLevel--;
+}
+
 float LevelManager::getTimeLimit()
 {
 	return m_BaseTimeLimit * m_TimeModifier;
